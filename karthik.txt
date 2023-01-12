@@ -1,0 +1,21 @@
+from itertools import combinations
+
+datastruct = {
+    "TOI": [3, 5, 6],
+    "HT": [2, 4, 4],
+    "Hindu": [2.5, 4, 4],
+    "ET": [4, 4, 10],
+    "BM": [1.5, 1.5, 1.5],
+    
+}
+
+cost = { paper:(prices[0]*5 + prices[1] + prices[2]) for paper, prices in datastruct.items() }
+
+budget = int(input())
+
+result = []
+for papers in combinations(cost.keys(), 2):
+    if cost[papers[0]] + cost[papers[1]] <= budget:
+        result += [set(papers)]
+
+print(*result,sep=',')
